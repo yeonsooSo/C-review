@@ -1,7 +1,7 @@
 #pragma once
 #include <iomanip>
 #include <iostream>
-//"1. ºĞÆ÷µµ 2. ÃÑ¿ø 3. ÇÕ°İÀÚ ÃÑ¿ø 4. ÇÕ°İÀÚ Æò±Õ 5. ÀüÃ¼ Æò±Õ 6. Á¾·á"
+//"1. ë¶„í¬ë„ 2. ì´ì› 3. í•©ê²©ì ì´ì› 4. í•©ê²©ì í‰ê·  5. ì „ì²´ í‰ê·  6. ì¢…ë£Œ"
 class GradeService {
 public:
 	void distribution(int a, int b);
@@ -10,12 +10,12 @@ public:
 
 };
 void distribution(int a, int b) {
-	std::cout << "Pass: " << std::setw(3) << a << " ";		// ÇÕ°İÀÚ ¼ö ¿À¸¥ÂÊ Á¤·Ä
-	for (int i{ a }; i > 0; i--) {					// ÇÕ°İÀÚ ¼ö¸¸Å­ '*'Ãâ·Â, ¿ŞÂÊ Á¤·Ä
+	std::cout << "Pass: " << std::setw(3) << a << " ";		
+	for (int i{ a }; i > 0; i--) {					
 		std::cout << "*";
 	}
-	std::cout << "\nFail: " << std::setw(3) << b << " ";		// ºÒÇÕ°İÀÚ ¼ö ¿À¸¥ÂÊ Á¤·Ä
-	for (int i{ b }; i > 0; i--) {					// ºÒÇÕ°İÀÚ ¼ö¸¸Å­ '*'Ãâ·Â, ¿ŞÂÊ Á¤·Ä
+	std::cout << "\nFail: " << std::setw(3) << b << " ";		
+	for (int i{ b }; i > 0; i--) {					
 		std::cout << "*";
 	}
 	std::cout << "\n\n";

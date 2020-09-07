@@ -4,19 +4,19 @@
 using namespace std;
 
 int main() {
-	int score{ 0 };			// ÀÔ·Â¹ŞÀ» Á¡¼ö
-	int countPass{ 0 };		// ÇÕ°İÀÚ ÀÎ¿øÀ» ¼¼´Â º¯¼ö
-	int countFail{ 0 };		// ºÒÇÕ°İÀÚ ÀÎ¿øÀ» ¼¼´Â º¯¼ö
-	int countTotal{ 0 };	// ÃÑ¿øÀ» ¼¼´Â º¯¼ö
-	int passTotal{ 0 };		// ÇÕ°İÀÚ Á¡¼öÀÇ ÃÑÇÕ (ÇÕ°İÀÚ Æò±Õ °è»ê À§ÇØ)
-	int scoreTotal{ 0 };	// ÀüÃ¼ Á¡¼öÀÇ ÃÑÇÕ (ÀüÃ¼ Æò±Õ °è»ê À§ÇØ)
+	int score{ 0 };			// ì…ë ¥ë°›ì„ ì ìˆ˜
+	int countPass{ 0 };		// í•©ê²©ì ì¸ì›ì„ ì„¸ëŠ” ë³€ìˆ˜
+	int countFail{ 0 };		// ë¶ˆí•©ê²©ì ì¸ì› (ì´ - í•©)
+	int countTotal{ 0 };	// ì´ì›ì„ ì„¸ëŠ” ë³€ìˆ˜
+	int passTotal{ 0 };		// í•©ê²©ì ì ìˆ˜ì˜ ì´í•© (í•©ê²©ì í‰ê·  ê³„ì‚° ìœ„í•´)
+	int scoreTotal{ 0 };	// ì „ì²´ ì ìˆ˜ì˜ ì´í•© (ì „ì²´ í‰ê·  ê³„ì‚° ìœ„í•´)
 
 
-	cout << "Á¡¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä. (Á¾·á´Â -1): " << endl;
+	cout << "ì ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”. (ì¢…ë£ŒëŠ” -1): " << endl;
 	cin >> score;
 	while (score != -1) {
 		if (score > 100 || score < 0) {
-			cout << "¿Ã¹Ù¸¥ Á¡¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä. (Á¾·á´Â -1)" << endl;
+			cout << "ì˜¬ë°”ë¥¸ ì ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”. (ì¢…ë£ŒëŠ” -1)" << endl;
 			cin >> score;
 			continue;
 		}
@@ -27,22 +27,22 @@ int main() {
 			scoreTotal += score;
 		}
 		else {
-			countFail++;
 			countTotal++;
 			scoreTotal += score;
 		}
-		cout << "Á¡¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä. (Á¾·á´Â -1): " << endl;
+		cout << "ì ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”. (ì¢…ë£ŒëŠ” -1): " << endl;
 		cin >> score;
 	}
-
-	cout << "\n<°´Ã¼ÁöÇâ ÇÁ·Î±×·¡¹Ö ¼ºÀû>" << endl;
+	countFail = countTotal - countPass;
+	
+	cout << "\n<ê°ì²´ì§€í–¥ í”„ë¡œê·¸ë˜ë° ì„±ì >" << endl;
 	cout << fixed;
-	int menu{ 0 };		// ÀÔ·Â¹ŞÀ» Ç×¸ñ ¹øÈ£
+	int menu{ 0 };		// ì…ë ¥ë°›ì„ í•­ëª© ë²ˆí˜¸
 
 	GradeService grade1;
-	while (menu != 6) { // 6À» ÀÔ·Â¹ŞÀ» ¶§±îÁö ¹İº¹ (Sentinel)
-		cout << "1. ºĞÆ÷µµ 2. ÃÑ¿ø 3. ÇÕ°İÀÚ ÃÑ¿ø 4. ÇÕ°İÀÚ Æò±Õ 5. ÀüÃ¼ Æò±Õ 6. Á¾·á" << endl;
-		cout << "¸Ş´º¸¦ ¼±ÅÃÇÏ¼¼¿ä: ";
+	while (menu != 6) { // 6ì„ ì…ë ¥ë°›ì„ ë•Œê¹Œì§€ ë°˜ë³µ (Sentinel)
+		cout << "1. ë¶„í¬ë„ 2. ì´ì› 3. í•©ê²©ì ì´ì› 4. í•©ê²©ì í‰ê·  5. ì „ì²´ í‰ê·  6. ì¢…ë£Œ" << endl;
+		cout << "ë©”ë‰´ë¥¼ ì„ íƒí•˜ì„¸ìš”: ";
 		cin >> menu;
 
 		switch (menu) {
@@ -50,26 +50,26 @@ int main() {
 			grade1.distribution(countPass, countFail);
 			break;
 		case(2):
-			cout << "<ÃÑ¿ø: " << countTotal << ">\n\n";
+			cout << "<ì´ì›: " << countTotal << ">\n\n";
 			break;
 		case(3):
-			cout << "<ÇÕ°İÀÚ ÃÑ¿ø: " << countPass << ">\n\n";
+			cout << "<í•©ê²©ì ì´ì›: " << countPass << ">\n\n";
 			break;
 		case(4):
-			cout << setprecision(2);		// ¾ÕÀ¸·Î ¼Ò¼öÁ¡ 2¹øÂ° ÀÚ¸®±îÁö Ãâ·ÂÇÑ´Ù.
-			cout << "<ÇÕ°İÀÚ Æò±Õ: " << grade1.passAve(passTotal,countTotal) << ">\n\n";	// (ÇÕ°İÀÚ Á¡¼öÀÇ ÃÑÇÕ) / (ÇÕ°İÀÚ ¼ö)
-			break;						// doubleÇüÀ¸·Î Çü º¯È¯
+			cout << setprecision(2);		// ì•ìœ¼ë¡œ ì†Œìˆ˜ì  2ë²ˆì§¸ ìë¦¬ê¹Œì§€ ì¶œë ¥í•œë‹¤.
+			cout << "<í•©ê²©ì í‰ê· : " << grade1.passAve(passTotal,countTotal) << ">\n\n";	// (í•©ê²©ì ì ìˆ˜ì˜ ì´í•©) / (í•©ê²©ì ìˆ˜)
+			break;						// doubleí˜•ìœ¼ë¡œ í˜• ë³€í™˜
 		case(5):
-			cout << "<ÀüÃ¼ Æò±Õ: " << grade1.totalAve(scoreTotal, countTotal) << ">\n\n";	// (Á¡¼öÀÇ ÃÑÇÕ) / (ÀüÃ¼ ÀÎ¿ø ¼ö)
+			cout << "<ì „ì²´ í‰ê· : " << grade1.totalAve(scoreTotal, countTotal) << ">\n\n";	// (ì ìˆ˜ì˜ ì´í•©) / (ì „ì²´ ì¸ì› ìˆ˜)
 			break;
 		case(6):
-			cout << "<ÇÁ·Î±×·¥ÀÌ Á¾·áµÇ¾ú½À´Ï´Ù.>\n\n";
+			cout << "<í”„ë¡œê·¸ë¨ì´ ì¢…ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.>\n\n";
 			break;
-		default:	// 1~6 ¿ÜÀÇ ¼ıÀÚ¸¦ ÀÔ·Â¹Ş¾ÒÀ» ¶§
-			cout << "<Àß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù.>\n\n";
+		default:	// 1~6 ì™¸ì˜ ìˆ«ìë¥¼ ì…ë ¥ë°›ì•˜ì„ ë•Œ
+			cout << "<ì˜ëª»ëœ ì…ë ¥ì…ë‹ˆë‹¤.>\n\n";
 		}
 	}
-	cout << "ÀÌ¿ëÇØÁÖ¼Å¼­ °¨»çÇÕ´Ï´Ù." << endl;
+	cout << "ì´ìš©í•´ì£¼ì…”ì„œ ê°ì‚¬í•©ë‹ˆë‹¤." << endl;
 
 	return 0;
 }
